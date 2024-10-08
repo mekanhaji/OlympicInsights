@@ -1,7 +1,7 @@
 #include "stdio.h"
 #include "string.h"
 
-#define MAX_COUNTRIES 5  // Maximum number of countries
+#define MAX_COUNTRIES 2  // Maximum number of countries
 
 struct Country {
     char name[50];    // Country name
@@ -38,16 +38,23 @@ struct Country createCountry(char* name, int gold, int silver, int bronze) {
     return newCountry;
 }
 
-/* Display Country medal detail */
-void printCountry(const struct Country* country) {
-    printf(
-        "Country: %s, Gold: %d, Silver: %d, Bronze: %d, Total Medals: %d\n",
-        country->name,
-        country->gold,
-        country->silver,
-        country->bronze,
-        country->total
-    );
+/* Function to display country medal details in a tabular format */
+void printCountry(const struct Country countries[]) {
+    // Print the table header
+    printf("\n%-20s%-10s%-10s%-10s%-15s%-10s%-10s\n", "Country", "Gold", "Silver", "Bronze", "Total Medals", "Points", "Rank");
+    printf("----------------------------------------------------------------------------------------\n");
+
+    // Print the table body with each country's details
+    for (int i = 0; i < MAX_COUNTRIES; i++) {
+        printf("%-20s%-10d%-10d%-10d%-15d%-10d%-10d\n",
+            countries[i].name,
+            countries[i].gold,
+            countries[i].silver,
+            countries[i].bronze,
+            countries[i].total,
+            countries[i].points,
+            countries[i].ranks);
+    }
 }
 
 /* Get country from user */
@@ -66,9 +73,9 @@ void getCountry(struct Country* country) {
 }
 
 /* Function to sort countries based on points (descending order) */
-void sortCountriesByPoints(struct Country countries[], int n) {
-    for (int i = 0; i < n - 1; i++) {
-        for (int j = 0; j < n - i - 1; j++) {
+void sortCountriesByPoints(struct Country countries[]) {
+    for (int i = 0; i < MAX_COUNTRIES - 1; i++) {
+        for (int j = 0; j < MAX_COUNTRIES - i - 1; j++) {
             if (countries[j].points < countries[j + 1].points) {
                 // Swap countries[j] and countries[j + 1]
                 struct Country temp = countries[j];
@@ -80,8 +87,8 @@ void sortCountriesByPoints(struct Country countries[], int n) {
 }
 
 /* Function to assign ranks based on sorted points */
-void assignRanks(struct Country countries[], int n) {
-    for (int i = 0; i < n; i++) {
+void assignRanks(struct Country countries[]) {
+    for (int i = 0; i < MAX_COUNTRIES; i++) {
         countries[i].ranks = i + 1; // Rank starts from 1
     }
 }
@@ -92,19 +99,19 @@ int main() {
     // Get input for all countries
     for (int i = 0; i < MAX_COUNTRIES; i++) {
         getCountry(&countries[i]);
+        countries[i].total = calculateTotal(&countries[i]);
+        countries[i].points = calculatePoints(&countries[i]);
     }
 
     // Sort the countries by points in descending order
-    sortCountriesByPoints(countries, MAX_COUNTRIES);
+    sortCountriesByPoints(countries);
 
     // Assign ranks based on points
-    assignRanks(countries, MAX_COUNTRIES);
+    assignRanks(countries);
 
     // Display the sorted list with ranks
     printf("\nMedal Table (Sorted by Points):\n");
-    for (int i = 0; i < MAX_COUNTRIES; i++) {
-        printCountry(&countries[i]);
-    }
+    printCountry(countries);
 
     return 0;
 }
