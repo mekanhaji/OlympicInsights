@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include "medal_analysis.h"
+#include "lib/medal_analysis.h"
 
 #define MAX_COUNTRIES 2  // Increased maximum number of countries
 #define MAX_NAME_LENGTH 50 // Maximum length for country names
