@@ -1,8 +1,9 @@
 main: main.c medal_analysis.c medal_analysis.h
-	gcc -Wall -Wextra -Werror -o main main.c medal_analysis.c
+	mkdir -p build
+	gcc -Wall -Wextra -Werror -o build/main main.c medal_analysis.c
 
 run: main
-	./main
+	./build/main
 
 clean:
-	rm -f main
+	rm -f *.exe *.o build/*
