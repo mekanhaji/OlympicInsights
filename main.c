@@ -3,18 +3,9 @@
 #include <stdlib.h>
 #include "lib/medal_analysis.h"
 
-#define MAX_COUNTRIES 2  // Increased maximum number of countries
+#define MAX_COUNTRIES 50  // Increased maximum number of countries
 #define MAX_NAME_LENGTH 50 // Maximum length for country names
 
-// struct Country {
-//     char name[MAX_NAME_LENGTH];
-//     int gold;
-//     int silver;
-//     int bronze;
-//     int total;
-//     int rank;
-//     int points;
-// };
 
 int calculateTotal(const struct Country* country) {
     return country->gold + country->silver + country->bronze;
