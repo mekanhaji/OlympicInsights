@@ -75,6 +75,18 @@ void assignRanks(struct Country countries[], int count) {
     }
 }
 
+void printMenu(const int count) {
+    printf("\n\n===========================================\n");
+    printf("|| Welcome to the Medal Analysis Program ||\n");
+    printf("===========================================\n\n");
+    printf(" Total Countries: %d\n", count);
+    printf(" Main Menu\n");
+    printf(" 1. Add a country\n");
+    printf(" 2. View countries\n");
+    printf(" 3. Show Analytics\n");
+    printf(" 4. Clear Screen\n");
+    printf(" 5. Exit\n");
+}
 
 int main() {
     struct Country countries[MAX_COUNTRIES];
@@ -84,30 +96,47 @@ int main() {
     // Load data from file
     count = loadFromFile(countries);
 
-    do {
-        if (count >= MAX_COUNTRIES) {
-            printf("Maximum number of countries reached.\n");
+    system("clear");
+    printMenu(count);
+
+    while (1) {
+        printf("\nEnter your choice (1..5) > ");
+        choice = getchar();
+
+        if (choice == '1') {
+            if (count >= MAX_COUNTRIES) {
+                printf("Maximum number of countries reached.\n");
+                continue;
+            }
+
+            getCountry(&countries[count]);
+            count++;
+
+            // Save data to file
+            saveToFile(countries, count);
+        }
+        else if (choice == '2') {
+            qsort(countries, count, sizeof(struct Country), compareCountries);
+            assignRanks(countries, count);
+
+            printf("\nMedal Table (Sorted by Points, then Gold, Silver, and Bronze):\n");
+            printCountry(countries, count);
+
+        }
+        else if (choice == '3') {
+            analyzeResults(countries, count);
+        }
+        else if (choice == '4') {
+            system("clear");
+            printMenu(count);
+        }
+        else if (choice == '5') {
             break;
         }
 
-        getCountry(&countries[count]);
-        count++;
+        while (getchar() != '\n');  // Clear input buffer
+    }
 
-        printf("Do you want to add another country? (y/n): ");
-        scanf(" %c", &choice);
-    } while (choice == 'y' || choice == 'Y');
-
-    qsort(countries, count, sizeof(struct Country), compareCountries);
-    assignRanks(countries, count);
-
-    printf("\nMedal Table (Sorted by Points, then Gold, Silver, and Bronze):\n");
-    printCountry(countries, count);
-
-    // Call the new analysis function
-    analyzeResults(countries, count);
-
-    // Save data to file
-    saveToFile(countries, count);
 
     return 0;
 }
