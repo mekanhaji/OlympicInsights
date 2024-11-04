@@ -4,6 +4,8 @@
 #include <stdio.h>
 
 #define MAX_CHART_WIDTH 10
+#define MAX_COUNTRIES 50  // Increased maximum number of countries
+#define MAX_NAME_LENGTH 50 // Maximum length for country names
 
 struct Country {
     char name[50];
