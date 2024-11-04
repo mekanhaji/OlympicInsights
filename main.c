@@ -2,9 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include "lib/medal_analysis.h"
-
-#define MAX_COUNTRIES 50  // Increased maximum number of countries
-#define MAX_NAME_LENGTH 50 // Maximum length for country names
+#include "lib/file_db.h"
 
 
 int calculateTotal(const struct Country* country) {
@@ -83,6 +81,9 @@ int main() {
     int count = 0;
     char choice;
 
+    // Load data from file
+    count = loadFromFile(countries);
+
     do {
         if (count >= MAX_COUNTRIES) {
             printf("Maximum number of countries reached.\n");
@@ -104,6 +105,9 @@ int main() {
 
     // Call the new analysis function
     analyzeResults(countries, count);
+
+    // Save data to file
+    saveToFile(countries, count);
 
     return 0;
 }
