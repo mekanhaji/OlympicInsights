@@ -76,15 +76,16 @@ void assignRanks(struct Country countries[], int count) {
 }
 
 void printMenu(const int count) {
-    printf("Welcome to the Medal Analysis Program\n");
-    printf("=====================================\n");
-    printf("Total Countries %d\n", count - 1);
-    printf("Main Menu\n");
-    printf("1. Add a country\n");
-    printf("2. View countries\n");
-    printf("3. Show Analytics\n");
-    printf("4. Clear Screen\n");
-    printf("5. Exit\n");
+    printf("\n\n===========================================\n");
+    printf("|| Welcome to the Medal Analysis Program ||\n");
+    printf("===========================================\n\n");
+    printf(" Total Countries: %d\n", count);
+    printf(" Main Menu\n");
+    printf(" 1. Add a country\n");
+    printf(" 2. View countries\n");
+    printf(" 3. Show Analytics\n");
+    printf(" 4. Clear Screen\n");
+    printf(" 5. Exit\n");
 }
 
 int main() {
