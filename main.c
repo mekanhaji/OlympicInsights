@@ -14,17 +14,21 @@ int calculatePoints(const struct Country* country) {
 }
 
 void printCountry(const struct Country countries[], int count) {
-    printf("\n%-20s%-10s%-10s%-10s%-15s%-10s%-10s\n", "Country", "Gold", "Silver", "Bronze", "Total Medals", "Points", "Rank");
+    printf(
+        "\n%-10s%-20s%-10s%-10s%-10s%-15s%-10s\n",
+        "Rank", "Country", "Gold", "Silver", "Bronze", "Total Medals", "Points"
+    );
     printf("----------------------------------------------------------------------------------------\n");
     for (int i = 0; i < count; i++) {
-        printf("%-20s%-10d%-10d%-10d%-15d%-10d%-10d\n",
+        printf("%-10d%-20s%-10d%-10d%-10d%-15d%-10d\n",
+            countries[i].rank,
             countries[i].name,
             countries[i].gold,
             countries[i].silver,
             countries[i].bronze,
             countries[i].total,
-            countries[i].points,
-            countries[i].rank);
+            countries[i].points
+        );
     }
 }
 
