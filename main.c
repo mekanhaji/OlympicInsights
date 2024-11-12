@@ -65,6 +65,10 @@ int compareCountries(const void* a, const void* b) {
     return countryB->bronze - countryA->bronze;
 }
 
+void clrscr() {
+    system("@cls||clear");
+}
+
 void assignRanks(struct Country countries[], int count) {
     for (int i = 0; i < count; i++) {
         if (i > 0 && countries[i].points == countries[i - 1].points &&
@@ -100,7 +104,7 @@ int main() {
     // Load data from file
     count = loadFromFile(countries);
 
-    system("clear");
+    clrscr();
     printMenu(count);
 
     while (1) {
@@ -131,7 +135,7 @@ int main() {
             analyzeResults(countries, count);
         }
         else if (choice == '4') {
-            system("clear");
+            clrscr();
             printMenu(count);
         }
         else if (choice == '5') {
