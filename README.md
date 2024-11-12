@@ -1,8 +1,8 @@
-# Olympic Medal Analytics
+# Olympic Insides
 
 ## Project Overview
 
-Olympic Medal Analytics is a C program designed to track and analyze medal counts for various countries in the Olympics. This project allows users to input medal data for multiple countries and provides analysis based on total medals, points, and rankings.
+Olympic Insides is a C program designed to track and analyze medal counts for various countries in the Olympics. This project allows users to input medal data for multiple countries and provides analysis based on total medals, points, and rankings.
 
 ## Features
 
