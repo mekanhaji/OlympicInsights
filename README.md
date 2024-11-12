@@ -92,9 +92,7 @@ The project consists of the following files:
 
 ## Future Improvements
 
-- Implement file I/O to save and load medal data
 - Add more detailed statistical analysis
-- Create a menu system for various operations
 - Enhance visualization with more advanced charting libraries
 
 ## Contributing
