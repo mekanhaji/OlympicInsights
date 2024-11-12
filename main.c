@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include "lib/medal_analysis.h"
 #include "lib/file_db.h"
+#include "windows.h"
 
 
 int calculateTotal(const struct Country* country) {
@@ -97,6 +98,7 @@ void printMenu(const int count) {
 }
 
 int main() {
+    SetConsoleTitle("Olympic Insides");
     struct Country countries[MAX_COUNTRIES];
     int count = 0;
     char choice;
