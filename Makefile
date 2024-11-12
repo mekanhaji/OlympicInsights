@@ -10,7 +10,7 @@ main: main.c ./lib/medal_analysis.c ./lib/medal_analysis.h ./lib/file_db.h
 	mkdir -p $(BUILD_DIR)
 	$(CC) $(CFLAGS) -o $(TARGET) $(SRC)
 
-run: main
+run: 
 	./$(TARGET)
 
 clean:
